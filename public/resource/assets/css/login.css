@@ -1,0 +1,51 @@
+h2{
+    letter-spacing: 2pt;
+    font-size: 2.5em;
+}
+h2::after{
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #8bc6ec;
+    margin: 0.5em auto;
+}
+form p{
+    font-size: 18px;
+}
+input[type="text"],
+input[type="password"]{
+    border: 2px solid #e0e0e0;
+    border-radius: 30px;
+    font-size: 1em;
+    background-color: #f9f9f9;
+    width: 70%;
+    margin: 0 auto;
+    padding: 1.25rem;
+}
+input[type="submit"]{
+    background-color: #4986ad;
+    color: #fff;
+    border-radius: 30px;
+    font-size: 20px;
+    padding: 10px;
+}
+input[type="submit"]:hover{
+    transition: 0.3s;
+    transform: translatey(-3px);
+}
+input[type="submit"]:active{
+    background-color: #3d7496;
+}
+.row{
+    height: 100svh;
+    align-items: center;
+}
+.card{
+    border-radius: 25px;
+}
+#content{
+    background-image: url('../img/bg-login.png');
+    background-position: center;
+    background-size: cover;
+}
