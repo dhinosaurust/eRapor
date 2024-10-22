@@ -1,64 +1,28 @@
 <!-- Sidebar -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-    <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
+    <a style="height: auto !important;" class="sidebar-brand d-flex flex-column align-items-center text-decoration-none mt-3" href="#">
+        <img style="border: solid 2px #fff !important; object-fit: cover; width: 120px; height: 120px;" class="user-profile img-fluid border rounded-circle" src="resource/assets/img/pic_blank.jpeg" alt="user-profile">
+        <div class="sidebar-brand-text mb-4">
+            <p class="font-weight-normal text-white text-center mt-3 mb-2"><small><?php echo $name ? $name : "-" ; ?></small></p>
+            <p class="text-white text-center mb-0"><small class="font-weight-bold"><?php echo $username ? $username : "" ; ?></small></p>
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
     </a>
 
     <!-- Divider -->
-    <!-- <hr class="sidebar-divider my-0"> -->
+    <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item <?php echo $parameter == '' ? 'active' : '' ;?> ">
-        <a class="nav-link " href="?">
+    <li class="nav-item <?php echo $_SERVER['REQUEST_URI'] == '/' ? 'active' : '' ;?> ">
+        <a class="nav-link " href="/">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <!-- Heading -->
-    <!-- <div class="sidebar-heading">
-        Interface
-    </div> -->
-
-    <!-- Nav Item - Utilities Collapse Menu -->
-    <!-- <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-            aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fas fa-fw fa-wrench"></i>
-            <span>Utilities</span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-            data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Utilities:</h6>
-                <a class="collapse-item" href="utilities-color.html">Colors</a>
-                <a class="collapse-item" href="utilities-border.html">Borders</a>
-                <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                <a class="collapse-item" href="utilities-other.html">Other</a>
-            </div>
-        </div>
-    </li> -->
-
-    <!-- Divider -->
-    <!-- <hr class="sidebar-divider"> -->
-
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Test
-    </div>
-
-    <!-- Nav Item - Pages Collapse Menu -->
 
     <!-- Nav Item - Charts -->
-    <li class="nav-item <?php echo $parameter == "list-pegawai" ? 'active' : '' ;?>">
-        <a class="nav-link" href="?list-pegawai">
+    <li class="nav-item <?php echo $_SERVER['REQUEST_URI'] == '/list-pegawai' ? 'active' : '' ;?>">
+        <a class="nav-link" href="/list-pegawai">
             <i class="fas fa-fw fa-table"></i>
             <span>Data Pegawai</span></a>
     </li>

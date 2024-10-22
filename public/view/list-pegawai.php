@@ -28,20 +28,34 @@
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>NIP/NIK</th>
                             <th>Nama</th>
+                            <th>NIP/NIK</th>
+                            <th>Jenis</th>
+                            <th>OPD</th>
+                            <th>Unit Kerja</th>
+                            <th>Jabatan</th>
                             <th>Jenis Kelamin</th>
                             <th>Tanggal Lahir</th>
+                            <th>Tingkat Pendidikan</th>
+                            <th>Golongan</th>
+                            <th>Jenis Jabatan</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             <th>No.</th>
-                            <th>NIP/NIK</th>
                             <th>Nama</th>
+                            <th>NIP/NIK</th>
+                            <th>Jenis</th>
+                            <th>OPD</th>
+                            <th>Unit Kerja</th>
+                            <th>Jabatan</th>
                             <th>Jenis Kelamin</th>
                             <th>Tanggal Lahir</th>
+                            <th>Tingkat Pendidikan</th>
+                            <th>Golongan</th>
+                            <th>Jenis Jabatan</th>
                             <th>Aksi</th>
                         </tr>
                     </tfoot>

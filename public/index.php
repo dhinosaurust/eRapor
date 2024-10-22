@@ -2,20 +2,18 @@
     session_start();
 
     // routing path 
-    $parameter = '';
-
-    if (isset($_GET)) {
-        foreach ($_GET as $key => $value) {
-            $parameter = $key;
-        }
-    }
-
-    // $username = '';
-    // if(isset($_SESSION['user_login'])) {
+    
+    // if(isset($_SESSION['user_login'])){
     //     $username = $_SESSION['user_login'];
-    // } 
-   
-      
+    //     $name = $_SESSION['nama'];
+    // }
+
+    // if(!isset($_SESSION['user_login'])){
+    //     if($_SERVER['REQUEST_URI'] == '/login'){
+    //         header('Location: /login');
+    //         exit;
+    //     }
+    // }
 
 ?>
 
@@ -38,26 +36,35 @@
     <link href="resource/assets/css/sb-admin-2.min.css" rel="stylesheet">
 
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <?php echo $parameter == 'login' ? '<link href="resource/assets/css/login.css" rel="stylesheet">' : '' ?>
+    <?php echo $_SERVER['REQUEST_URI'] == '/login' ? '<link href="resource/assets/css/login.css" rel="stylesheet">' : ''; ?>
+
+    <style>
+        .toggled .user-profile{
+            width: 40px !important;
+            height: 40px !important;
+        }
+    </style>
 
 </head>
 
 <body id="page-top">
 
     <div id="wrapper">
+        
+        <?php //var_dump($_SERVER['REQUEST_URI'] == '/login')?>
 
-        <?php $parameter !== 'login' ? include '../component/sidebar.php' : '' ?>
+        <?php $_SERVER['REQUEST_URI'] != '/login' ? include '../component/sidebar.php' : '' ?>
 
         <div id="content-wrapper" class="d-flex flex-column">
 
             <div id="content">
 
-                <?php $parameter !== 'login' ? include '../component/header.php' : ''?>
-                <?php include '../routing.php'?>
+                <?php $_SERVER['REQUEST_URI'] != '/login' ? include '../component/header.php' : ''?>
+                <?php include("../routing.php")?>
 
             </div>
 
-            <?php echo $parameter !== 'login' ?
+            <?php echo $_SERVER['REQUEST_URI'] != '/login' ?
             '<footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
@@ -101,89 +108,13 @@
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="resource/assets/js/sb-admin-2.min.js"></script>
    
-    <?php echo $parameter == 'list-pegawai' ? '<script src="vendor/datatables/jquery.dataTables.min.js"></script>' : '' ?> 
-    <?php echo $parameter == 'list-pegawai' ? '<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>' : '' ?> 
+    <?php echo $request_uri == '/list-pegawai' ? '<script src="vendor/datatables/jquery.dataTables.min.js"></script>' : '' ?> 
+    <?php echo $request_uri == '/list-pegawai' ? '<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>' : '' ?> 
 
-    <?php echo $parameter == 'list-pegawai' ? '<script src="resource/assets/js/demo/datatables-demo.js"></script>' : ''; ?>
+    <?php echo $request_uri == '/list-pegawai' ? '<script src="resource/assets/js/demo/datatables-demo.js"></script>' : ''; ?>
     
-    <script>
+    <?php echo $request_uri == '/list-pegawai' ? '<script src="resource/assets/js/list-pegawai.js"></script>' : '' ;?>
 
-    $('#dataTable').DataTable({
-        "ajax": {
-            "type": "POST",
-            "url": "data_pegawai.json",
-            "timeout": 12000,
-            "dataSrc": function (json) {
-                if(json != null){
-                    return json
-                } else {
-                    return "";
-                }
-            }
-            // success: function(res){
-            //     for(const key in res){
-            //         console.log(res[key].nip_nik)
-            //     }
-            // }
-        },
-        "columns": [
-            {
-                "data": null, // For the numbering column
-                "render": function (data, type, row, meta) {
-                    return meta.row + 1; // Incremental numbering starting from 1
-                }
-            },
-            { "data": "nip_nik" },
-            { "data": "nama" },
-            { "data": "jenis_kelamin" },
-            { "data": "tgl_lahir" },
-            {
-                "data": null,
-                "render": function (data, type, row){
-                    return `
-                        <button class="btn btn-primary btn-sm view-btn" data-id="${row.nip_nik}">
-                            <i class="fas fa-eye"></i>
-                        </button>
-                        <button class="btn btn-warning btn-sm edit-btn" data-id="${row.nip_nik}">
-                            <i class="fas fa-edit"></i>
-                        </button>
-                        <button class="btn btn-danger btn-sm delete-btn" data-id="${row.nip_nik}">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    `;
-                }
-            }
-        ]
-    });
 
-    // $(document).ready(function() {
-    //     $.get({
-    //         url: 'data_pegawai.json',
-    //         success: function(data){
-    //             let list = '';
-    //             for(const key in data){
-    //                 list += '<tr>';
-    //                 list += '<td>'+data[key].opd+'</td>';
-    //                 list += '<td>'+data[key].kategori+'</td>';
-    //                 list += '<td>'+data[key].nama+'</td>';
-    //                 list += '<td>'+data[key].nip_nik+'</td>';
-    //                 list += '<td>'+data[key].unit_kerja+'</td>';
-    //                 list += '<td>'+data[key].jabatan+'</td>';
-    //                 list += '<td>'+data[key].jenis_kelamin+'</td>';
-    //                 list += '<td>'+data[key].tgl_lahir+'</td>';
-    //                 list += '<td>'+data[key].tk_pendidikan+'</td>';
-    //                 list += '<td>'+data[key].golongan+'</td>';
-    //                 list += '<td>'+data[key].jenisjabatan+'</td>';
-    //                 list += '</tr>';
-    //             }
-
-    //             $("#table-body").html(list);
-    //             $('#dataTable').DataTable();
-    //         }
-
-    //     })
-    // })
-    
-    </script>
 </body>
 </html>

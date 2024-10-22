@@ -1,13 +1,21 @@
 <?php
 
-$source = "public/view/$parameter.php";
+$request_uri = $_SERVER['REQUEST_URI'];
 
-if(!isset($parameter)) die('Routing yang dituju tidak ada atau file tidak ada');
+$routes = [
+    '/' => 'public/view/default.php',
+    '/login' => 'public/login.php',
+    '/logout' => 'public/logout.php',
+    '/list-pegawai' => 'public/view/list-pegawai.php'
+];
 
-if($parameter === ''){
-    include "public/view/default.php";
+if(array_key_exists($request_uri, $routes)){
+    $page = $routes[$request_uri];
+    include($page);
 } else {
-    include($source);
+    http_response_code(404);
+    echo 'halaman tidak ditemukan';
 }
+
 
 ?>
